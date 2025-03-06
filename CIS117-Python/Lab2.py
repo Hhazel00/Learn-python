@@ -26,29 +26,18 @@ This module defines six functions:
 #         RETURN False
 
 
-def is_palindrome(text):
-    """
-    Checks if the given text is a palindrome.
-    Ignores case and optionally non-alphabetic characters.
-    Returns True if palindrome, False otherwise.
-    """
-    
-    # 1. Convert text to lowercase. (COULD BE WRONG!!!!!!!!!!!!! NEED TO DOUBLE CHECK)
-    lowercase_text = text.lower()
-    # 2. Remove all non-alphabetic characters (optional) or at least strip spaces.
-    # Input string
-    s1 = lowercase_text
+def palindrome(one):
+  '''hecks if sentence reads the same backwards'''
+  name = one.lower()
+  word = ''
+  for i in name:
+    if 'a' <= i <= 'z':
+      word += i
+  return word == word[::-1]
 
-    # Use list comprehension to keep only alphanumeric characters
-    s2 = ''.join([char for char in s1 if char.isalnum()])
-
-    # Print the cleaned string
-    print(s2)
-    
-    # 3. Set reversed_text = reverse of the cleaned text.
-
-
-
+# Example used
+# print("hellen", "is" if palindrome("hellen") else "is not", "palindrome")
+# print("anna", "is" if palindrome("anna") else "is not", "palindrome")
 
 # FUNCTION is_pangram(text):
 #     1. Convert text to lowercase.
@@ -60,6 +49,19 @@ def is_palindrome(text):
 #         RETURN True
 #        ELSE:
 #         RETURN False
+
+def pangram(two):
+  '''Checks if sentence containing all 26 letters of the alphabet'''
+  alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  two = two.lower()
+  for letter in alphabet:
+    if letter not in two:
+      return False
+  return True
+
+# Example used
+# print("green eggs and ham", "is" if pangram("green eggs and ham") else "is not", "pangram")
+# print("The quick brown fox jumps over the lazy dog", "is" if pangram("The quick brown fox jumps over the lazy dog") else "is not", "pangram")
         
 
 # FUNCTION is_tautogram(text):
@@ -72,7 +74,20 @@ def is_palindrome(text):
 #             RETURN False
 #     6. IF the loop completes with no mismatch:
 #         RETURN True
-        
+
+def tautogram(three):
+  '''Checks if all words start with the same letter'''
+  sentence = three.lower().split()
+
+  first_letter = sentence[0][0]
+
+  for word in sentence:
+    if word[0] != first_letter:
+      return False
+  return True
+
+# print("Petter pipper likes to sing", "is" if tautogram("Petter pipper likes to sing") else "is not", "tautogram")
+# print("Brilliant, because bacon bites beat bruschetta", "is" if tautogram("Brilliant, because bacon bites beat bruschetta") else "is not", "tautogram")
         
 # FUNCTION is_isogram(word):
 #     1. Convert word to lowercase.
